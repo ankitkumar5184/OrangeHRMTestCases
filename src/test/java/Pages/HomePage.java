@@ -13,5 +13,4 @@ public class HomePage {
     public void DashBoard(){
         driver.findElement(Homepage).click();
     }
-
 }
