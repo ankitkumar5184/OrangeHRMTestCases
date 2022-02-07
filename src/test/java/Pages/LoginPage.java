@@ -3,33 +3,26 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
-    WebDriver driver;
-    By username = By.id("txtUsername");
-    By password = By.id("txtPassword");
-
-    By login = By.id("btnLogin");
-
+public class LoginPage{
+    private static WebDriver driver;
     public LoginPage(WebDriver driver){
         this.driver = driver;
     }
-    public void setUsername(String strUsername){
-        driver.findElement(username).sendKeys(strUsername);
+    static By username= By.id("txtUsername");
+    public static void enterUsername(String uName){
+        //find username element and enter the username
+        driver.findElement(username).sendKeys(uName);
     }
-    public void setPassword(String strPassword){
-        driver.findElement(password).sendKeys(strPassword);
-    }
-    public void setLogin(){
-        driver.findElement(login).submit();
+    static By password= By.id("txtPassword");
+    public static void enterPassword(String pwd){
+        //find password element and enter password
+        driver.findElement(password).sendKeys(pwd);
     }
 
-    public void getTitle(){
-        driver.getTitle();
-    }
-    public void loginToHrm(String strUsername,String strPassword){
-        this.setUsername(strUsername);
-        this.setPassword(strPassword);
-        this.getTitle();
-        this.setLogin();
+    public static DashBoardPage clickLoginBtn(){
+        //click login button
+        driver.findElement(By.id("btnLogin")).click();
+        return new DashBoardPage(driver);
+
     }
 }
